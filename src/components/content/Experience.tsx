@@ -70,6 +70,7 @@ const data: Data = {
   "Rust Learning Group(CCNS)": {
     date: "2023 - 2024",
     price: "Lead",
+    url: "https://github.com/Eason0729/rust-slide",
   },
   "Google Developer Student Club": {
     date: "2023 - 2024",

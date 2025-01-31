@@ -94,6 +94,14 @@ const data: Data = {
       "Implemented coroutine-based async I/O for better performance using executor-reactor model.",
     ],
   },
+  "Novel translation website": {
+    url: "https://github.com/Eason0729/novel-tralslate",
+    tags: ["Web", "coursework"],
+    description: [
+      "Developed a novel translation pipeline with LLM.",
+      "Implemented a website for novel reading with a simple UI.",
+    ],
+  },
 };
 export const Project = component$(() => {
   return (
