@@ -20,6 +20,41 @@ function Rating(
   );
 }
 
+const data = {
+  "Programming Languages": [
+    { name: "Rust", dark: 5 },
+    { name: "Typescript", dark: 5 },
+    { name: "Javascript", dark: 4 },
+    { name: "Python", dark: 3 },
+    { name: "SQL", dark: 3 },
+    { name: "C", dark: 3 },
+  ],
+  "Tech Stacks": [
+    { name: "gRPC", dark: 5 },
+    { name: "Express.js", dark: 4 },
+    { name: "Axum", dark: 4 },
+    { name: "Oak", dark: 4 },
+    { name: "DuckDB", dark: 4 },
+    { name: "Sea-orm", dark: 4 },
+    { name: "denodb", dark: 4 },
+    { name: "drizzle", dark: 3 },
+    { name: "Postgres", dark: 4 },
+    { name: "React", dark: 4 },
+    { name: "Vue", dark: 2 },
+    { name: "TailwindCSS", dark: 3 },
+  ],
+  "Operating Systems": [
+    { name: "Fedora", dark: 5 },
+    { name: "Ubuntu", dark: 4 },
+    { name: "Windows", dark: 3 },
+  ],
+  "Tools": [
+    { name: "Git", dark: 5 },
+    { name: "Docker", dark: 4 },
+    { name: "Kubernetes", dark: 4 },
+  ],
+};
+
 export const Skill = component$(() => {
   return (
     <>
@@ -32,97 +67,19 @@ export const Skill = component$(() => {
         </div>
       </a>
 
-      <div class="mt-3 text-base">
-        <h3 class="font-light mb-1">Programming Languages</h3>
-        <ul class="font-bold pl-2">
-          <li>
-            <Rating name="Rust" dark={5} />
-          </li>
-          <li>
-            <Rating name="Typescript" dark={4} />
-          </li>
-          <li>
-            <Rating name="Javascript" dark={4} />
-          </li>
-          <li>
-            <Rating name="SQL" dark={3} />
-          </li>
-          <li>
-            <Rating name="Python" dark={3} />
-          </li>
-          <li>
-            <Rating name="Java" dark={3} />
-          </li>
-          <li>
-            <Rating name="CSS" dark={2} />
-          </li>
-        </ul>
-      </div>
-      <div class="mt-3 text-base">
-        <h3 class="font-light mb-1">Tech Stacks</h3>
-        <ul class="font-bold pl-2">
-          <li>
-            <Rating name="Tonic(gRPC)" dark={5} />
-          </li>
-          <li>
-            <Rating name="Express.js" dark={4} />
-          </li>
-          <li>
-            <Rating name="DuckDB" dark={4} />
-          </li>
-          <li>
-            <Rating name="Oak" dark={4} />
-          </li>
-          <li>
-            <Rating name="Axum" dark={4} />
-          </li>
-          <li>
-            <Rating name="React" dark={3} />
-          </li>
-          <li>
-            <Rating name="Vue" dark={2} />
-          </li>
-          <li>
-            <Rating name="Axum" dark={2} />
-          </li>
-          <li>
-            <Rating name="Parquet" dark={1} />
-          </li>
-        </ul>
-      </div>
-      <div class="mt-3 text-base">
-        <h3 class="font-light mb-1">Operating Systems</h3>
-        <ul class="font-bold pl-2">
-          <li>
-            <Rating name="Fedora" dark={5} />
-          </li>
-          <li>
-            <Rating name="Ubuntu" dark={4} />
-          </li>
-          <li>
-            <Rating name="Windows" dark={3} />
-          </li>
-          <li>
-            <Rating name="MacOS" dark={1} />
-          </li>
-        </ul>
-      </div>
-      <div class="mt-3 text-base">
-        <h3 class="font-light mb-1">Tools</h3>
-        <ul class="font-bold pl-2">
-          <li>
-            <Rating name="Git" dark={5} />
-          </li>
-          <li>
-            <Rating name="Kubernetes" dark={4} />
-          </li>
-          <li>
-            <Rating name="Docker" dark={4} />
-          </li>
-          <li>
-            <Rating name="Proxmox VE" dark={2} />
-          </li>
-        </ul>
+      <div class="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+        {Object.entries(data).map(([title, items]) => (
+          <div class="text-base">
+            <h3 class="font-light mb-1">{title}</h3>
+            <ul class="font-bold px-2">
+              {items.map((item) => (
+                <li>
+                  <Rating {...item} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </>
   );

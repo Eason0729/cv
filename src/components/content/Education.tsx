@@ -20,23 +20,16 @@ export const Education = component$(() => {
       </h2>
       <h3 class="text-lg mt-3">成功大學National Cheng Kung University</h3>
       <ul class="m-3 ml-7 list-disc">
-        <li>
-          <span class="lg:bg-white">
-            Encouragement of Privileged High School Students
-          </span>&nbsp;Scholarship
-        </li>
-        <li>
-          Member of&nbsp;
-          <span class="lg:bg-white">
-            NCKUCT(資安社)
-          </span>
-        </li>
-        <li>
-          Member of Information group at&nbsp;
-          <span class="lg:bg-white">
-            BT&D² Team
-          </span>
-        </li>
+        {[
+          "Member of CCNS(電腦網路愛好社)",
+          "Encouragement of Privileged High School Students Scholarship",
+          "Member of NCKUCTF(資安社)",
+          "Member of Information group at BT&D² Team",
+        ].map((item) => (
+          <li>
+            {item}
+          </li>
+        ))}
       </ul>
     </>
   );

@@ -6,10 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    padding-bottom: 10vh;
+body {
+  padding-bottom: 10vh;
 }
 
-svg{
-    display: inline-block;
+svg {
+  display: inline-block;
 }

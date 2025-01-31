@@ -18,10 +18,10 @@ export const Contact = component$(() => {
           <a href="https://www.linkedin.com/in/%E9%82%B1%E9%98%BF%E7%9D%BF/">
             <li>
               <BsLinkedin />
-              <span class="inline md:hidden ml-2">
+              <span class="inline md:hidden lg:inline ml-2">
                 @邱阿睿
               </span>
-              <span class="hidden md:inline ml-2">
+              <span class="hidden md:inline lg:hidden ml-2">
                 https://www.linkedin.com/in/邱阿睿
               </span>
             </li>

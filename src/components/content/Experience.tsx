@@ -8,14 +8,13 @@ import {
 } from "@qwikest/icons/bootstrap";
 
 function ExperienceEntry(
-  { title, url, children }: {
+  { title, url, date, price }: {
     title: string;
     url?: string;
-    children: JSXChildren[] | JSXChildren;
+    date?: string;
+    price?: string;
   },
 ) {
-  if (children === undefined) children = [];
-  if (!Array.isArray(children)) children = [children];
   return (
     <div class="grid grid-cols-5 cursor-grab items-center py-2">
       <a
@@ -37,16 +36,51 @@ function ExperienceEntry(
       </a>
       <div class="col-span-5 lg:col-span-2 font-semibold">
         <div class="px-6 lg:px-0 lg:float-right min-w-40">
-          {children.map((attr) => (
-            <div class="lg:justify-between flex items-center">
-              {attr}
-            </div>
-          ))}
+          <div class="lg:justify-between flex items-center">
+            <BsCalendar2 />&nbsp;{date}
+          </div>
+          <div class="lg:justify-between flex items-center">
+            <BsPerson />&nbsp;{price}
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
+interface Data {
+  [key: string]: {
+    date: string;
+    price: string;
+    url?: string;
+  };
+}
+
+const data: Data = {
+  "Hackathon Junior Taiwan 2021": {
+    date: "Aug 2021",
+    price: "UI/UX",
+    url: "https://github.com/info-rubbish/2021-summer",
+  },
+  "Meichu Hackathon 2024": {
+    date: "Oct 2024",
+    price: "NXP 2nd Prize",
+    url: "https://github.com/info-rubbish/meichu2024",
+  },
+  "Rust Learning Group(CCNS)": {
+    date: "2023 - 2024",
+    price: "Lead",
+  },
+  "Google Developer Student Club": {
+    date: "2023 - 2024",
+    price: "GCP SIG",
+    url: "https://github.com/gdsc-ncku/sync-focus",
+  },
+  "SITCON Hour of Code": {
+    date: "Dec 2023",
+    price: "Teaching Assistant",
+  },
+};
 
 export const Experience = component$(() => {
   return (
@@ -63,49 +97,14 @@ export const Experience = component$(() => {
         </div>
       </a>
 
-      <ExperienceEntry
-        title="Hackathon Junior Taiwan 2021"
-        url="https://github.com/info-rubbish/2021-summer"
-      >
-        <>
-          <BsCalendar2 />&nbsp;Aug 2021
-        </>
-        <>
-          <BsPerson />&nbsp;UI/UX
-        </>
-      </ExperienceEntry>
-
-      <ExperienceEntry
-        title="Meichu Hackathon 2024"
-        url="https://github.com/info-rubbish/2021-summer"
-      >
-        <>
-          <BsCalendar2 />&nbsp;Oct 2024
-        </>
-        <>
-          <BsAward />&nbsp;NXP 2nd Prize
-        </>
-      </ExperienceEntry>
-
-      <ExperienceEntry
-        title="Google Developer Student Club"
-        url="https://github.com/gdsc-ncku/sync-focus"
-      >
-        <>
-          <BsCalendar2 />&nbsp;2023 - 2024
-        </>
-        <>
-          <BsPerson />&nbsp;GCP SIG
-        </>
-      </ExperienceEntry>
-      <ExperienceEntry title="SITCON Hour of Code">
-        <>
-          <BsCalendar2 />&nbsp;Dec 2023
-        </>
-        <>
-          <BsPerson />&nbsp;Teaching Assistant
-        </>
-      </ExperienceEntry>
+      {Object.entries(data).map(([title, { date, price, url }]) => (
+        <ExperienceEntry
+          title={title}
+          date={date}
+          price={price}
+          url={url}
+        />
+      ))}
     </>
   );
 });

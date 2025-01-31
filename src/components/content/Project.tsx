@@ -50,6 +50,51 @@ function ProjectEntry(
     </div>
   );
 }
+
+interface Data {
+  [key: string]: {
+    url?: string;
+    tags: string[];
+    description: string[];
+  };
+}
+
+const data: Data = {
+  "Website to schedule chemistry data analysis": {
+    tags: ["Web", "Kubernetes", "Yunikorn"],
+    description: [
+      "Similar to Apache Airflow but less powerful(also less complex to use).",
+      "Avoid manual intervention between one analysis process and another.",
+      "Run 5 different ML-based chemistry analysis on 8 machines.",
+    ],
+  },
+  "Grpc(grpc-web) services for a contest-management website": {
+    url: "https://github.com/mdcpp/mdoj",
+    tags: ["gRPC", "Web", "Sandbox"],
+    description: [
+      "Developed a contest-management website with grpc services for real-time communication.",
+      "Implemented a contest management system with a real-time leaderboard.",
+      "Developed a web-based Editor for the contest.",
+    ],
+  },
+  "Website for study resource": {
+    url: "https://tlds.functionxyz.eu.org/",
+    tags: ["Web", "Firebase", "Serverless"],
+    description: [
+      "Assist schoolmates in locating resources through the development of a website.",
+      "Used by schoolmates, with over ten study notes within a month of release",
+    ],
+  },
+  "Dependency-free http reverse proxy": {
+    url: "https://github.com/Eason0729/simple-reverse-proxy",
+    tags: ["Multithreading", "System Programming"],
+    description: [
+      "Developed a dependency-free http reverse proxy with multithreading support.",
+      "Implemented a simple load balancer with round-robin algorithm that reach 40000 request per seconds.",
+      "Implemented coroutine-based async I/O for better performance using executor-reactor model.",
+    ],
+  },
+};
 export const Project = component$(() => {
   return (
     <>
@@ -64,76 +109,17 @@ export const Project = component$(() => {
           Side Project
         </div>
       </a>
-      <ProjectEntry
-        title="Website to schedule chemistry data analysis"
-        tags={["Web", "Kubernetes", "Yunikorn"]}
-      >
-        <ul class="text-sm list-disc ml-5 leading-4">
-          <li class="py-1">
-            Similar to Apache Airflow but less powerful(also less complex to
-            use).
-          </li>
-          <li class="py-1">
-            Avoid manual intervention between one analysis process and another.
-          </li>
-        </ul>
-      </ProjectEntry>
-
-      <ProjectEntry
-        title="Grpc(grpc-web) services for a contest-management website"
-        url="https://github.com/mdcpp/mdoj"
-        tags={["gRPC", "Web", "Sandbox"]}
-      >
-        <ul class="text-sm list-disc ml-5 leading-4">
-          <li class="py-1">
-            Developed a contest-management website with grpc services for
-            real-time communication.
-          </li>
-          <li class="py-1">
-            Implemented a contest management system with a real-time
-            leaderboard.
-          </li>
-          <li class="py-1">Developed a web-based Editor for the contest.</li>
-        </ul>
-      </ProjectEntry>
-
-      <ProjectEntry
-        title="Website for study resource"
-        url="https://tlds.functionxyz.eu.org/"
-        tags={["Web", "Firebase", "Serverless"]}
-      >
-        <ul class="text-sm list-disc ml-5 leading-4">
-          <li class="py-1">
-            Assist schoolmates in locating resources through the development of
-            a website.
-          </li>
-          <li class="py-1">
-            Used by schoolmates, with over ten study notes within a month of
-            release
-          </li>
-        </ul>
-      </ProjectEntry>
-
-      <ProjectEntry
-        title="Dependency-free http reverse proxy"
-        url="https://github.com/Eason0729/simple-reverse-proxy"
-        tags={["Multithreading", "System Programming"]}
-      >
-        <ul class="text-sm list-disc ml-5 leading-4">
-          <li class="py-1">
-            Developed a dependency-free http reverse proxy with multithreading
-            support.
-          </li>
-          <li class="py-1">
-            Implemented a simple load balancer with round-robin algorithm that
-            reach 40000 request per seconds.
-          </li>
-          <li class="py-1">
-            Implemented coroutine-based async I/O for better performance using
-            executor-reactor model.
-          </li>
-        </ul>
-      </ProjectEntry>
+      {Object.entries(data).map(([title, { url, tags, description }]) => (
+        <ProjectEntry title={title} url={url} tags={tags}>
+          <ul class="text-sm list-disc ml-5 leading-4">
+            {description.map((item) => (
+              <li class="py-1">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </ProjectEntry>
+      ))}
     </>
   );
 });
