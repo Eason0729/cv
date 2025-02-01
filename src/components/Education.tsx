@@ -6,7 +6,7 @@ export const Education = component$(() => {
     <>
       <a href="#education">
         <div
-          class="bg-sky-700 hover:bg-sky-400 rounded-full py-2 lg:mx-16 px-3 mx-3 mb-4 text-lg font-semibold text-white text-center"
+          class="bg-sky-700 hover:bg-sky-400 rounded-full py-2 px-3 lg:mx-16 mx-3 mb-4 mt-6 text-lg font-semibold text-white text-center"
           id="education"
         >
           <span class="h-6 w-6 mr-3 inline-block">

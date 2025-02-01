@@ -1,6 +1,8 @@
 import { Header } from "./components/Header";
-import { Content } from "./components/content/mod";
-import { Side } from "./components/side/mod";
+import { Education } from "./components/Education";
+import { Experience } from "./components/Experience";
+import { Project } from "./components/Project";
+import { Contact } from "./components/Contact";
 
 import "./global.css";
 
@@ -15,17 +17,15 @@ export default function Home() {
       </head>
       <body>
         <div
-          class="max-w-screen-lg shadow-2xl lg:mt-6 mx-auto bg-sky-100"
+          class="max-w-screen-lg shadow-2xl lg:mt-6 mx-auto bg-sky-50"
           id="pdf-root"
         >
           <Header />
-          <div class="grid grid-cols-3 cursor-grab">
-            <div class="col-span-3 lg:col-span-1">
-              <Side />
-            </div>
-            <div class="col-span-3 lg:col-span-2">
-              <Content />
-            </div>
+          <div class="p-6">
+            <Contact />
+            <Education />
+            <Experience />
+            <Project />
           </div>
         </div>
       </body>

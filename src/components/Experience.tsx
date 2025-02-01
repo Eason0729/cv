@@ -11,8 +11,8 @@ interface Data {
   date: string;
   price: string;
   url?: string;
-  descriptions?: string[];
-  tags?: string[];
+  descriptions: string[];
+  tags: string[];
 }
 
 function ExperienceEntry(
@@ -20,54 +20,41 @@ function ExperienceEntry(
 ) {
   return (
     <div class="pb-4">
-      <div class="grid grid-cols-5 cursor-grab items-center py-2">
-        <a
-          href={url}
-          class="col-span-5 lg:col-span-3 items-center"
-        >
-          <h3
-            class={url
-              ? "text-xl font-semibold text-blue-900 hover:text-blue-500"
-              : "text-xl font-semibold"}
-          >
+      <div class="lg:flex justify-between items-center">
+        <div>
+          <h2 class="text-xl font-semibold">
             {title}
-            {url && (
-              <span class="ml-2">
-                <BsLink45Deg />
+          </h2>
+          {url
+            ? (
+              <div>
+                {url}&nbsp; <BsLink45Deg />
+              </div>
+            )
+            : null}
+        </div>
+        <div>
+          <div>
+            <div class="flex items-center lg:justify-end">
+              <BsCalendar2 />&nbsp;{date}&nbsp;&nbsp;<BsPerson />&nbsp;{price}
+            </div>
+          </div>
+          <div class="space-x-1 flex flex-wrap">
+            {tags.map((tag) => (
+              <span class="rounded-lg py-1 px-2 mt-1 text-white font-semibold text-sm bg-sky-700 hover:bg-orange-600 whitespace-nowrap">
+                {tag}
               </span>
-            )}
-          </h3>
-          <ul class="text-sm list-disc ml-5 leading-4">
-            {(descriptions || []).map((item) => (
-              <li class="py-1">
-                {item}
-              </li>
             ))}
-          </ul>
-        </a>
-        <div class="col-span-5 lg:col-span-2 font-semibold">
-          <div class="px-6 lg:px-0 lg:float-right min-w-40">
-            <div class="lg:justify-between flex items-center">
-              <BsCalendar2 />&nbsp;{date}
-            </div>
-            <div class="lg:justify-between flex items-center">
-              <BsPerson />&nbsp;{price}
-            </div>
           </div>
         </div>
       </div>
-      {tags && tags.length > 0 && (
-        <div class="text-white space-x-1 flex flex-wrap overflow-hidden text-sm font-semibold py-1">
-          {tags.map((tag, index) => (
-            <span
-              key={index}
-              class="rounded-lg py-1 px-2 bg-sky-700 hover:bg-orange-600 whitespace-nowrap"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
+      <ul class="text-sm list-disc ml-5 leading-4">
+        {descriptions.map((item) => (
+          <li class="py-1">
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -112,11 +99,14 @@ const datas: Data[] = [
     descriptions: [
       "Organize biweekly meeting to learn Rust",
     ],
+    tags: [],
   },
   {
     title: "SITCON Hour of Code",
     date: "Dec 2023",
     price: "Teaching Assistant",
+    descriptions: [],
+    tags: [],
   },
 ];
 
@@ -125,7 +115,7 @@ export const Experience = component$(() => {
     <>
       <a href="#experience">
         <div
-          class="bg-sky-700 hover:bg-sky-400 rounded-full py-2 lg:mx-16 px-3 mx-3 mb-4 mt-6 text-lg font-semibold text-white text-center"
+          class="bg-sky-700 hover:bg-sky-400 rounded-full py-2 px-3 lg:mx-16 mx-3 mb-4 mt-6 text-lg font-semibold text-white text-center"
           id="experience"
         >
           <span class="h-6 w-6 mr-3 inline-block">

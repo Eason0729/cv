@@ -6,7 +6,7 @@ export const Contact = component$(() => {
     <>
       <a href="#contact">
         <div
-          class="bg-sky-700 hover:bg-sky-400 rounded-full py-2 px-3 mx-3 text-lg font-semibold text-white text-center"
+          class="bg-sky-700 hover:bg-sky-400 rounded-full py-2 px-3 lg:mx-16 mx-3 mb-4 mt-6 text-lg font-semibold text-white text-center"
           id="contact"
         >
           Contact
@@ -17,13 +17,7 @@ export const Contact = component$(() => {
         <ul>
           <a href="https://www.linkedin.com/in/%E9%82%B1%E9%98%BF%E7%9D%BF/">
             <li>
-              <BsLinkedin />
-              <span class="inline md:hidden lg:inline ml-2">
-                @邱阿睿
-              </span>
-              <span class="hidden md:inline lg:hidden ml-2">
-                https://www.linkedin.com/in/邱阿睿
-              </span>
+              <BsLinkedin /> https://www.linkedin.com/in/邱阿睿
             </li>
           </a>
         </ul>
