@@ -20,7 +20,7 @@ function ExperienceEntry(
 ) {
   return (
     <div class="pb-4">
-      <div class="lg:flex justify-between items-center">
+      <div class="md:flex justify-between items-center">
         <div>
           <h2 class="text-xl font-semibold">
             {title}

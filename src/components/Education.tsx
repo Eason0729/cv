@@ -21,9 +21,8 @@ export const Education = component$(() => {
       <h3 class="text-lg mt-3">成功大學National Cheng Kung University</h3>
       <ul class="m-3 ml-7 list-disc">
         {[
-          "Member of CCNS(電腦網路愛好社)",
+          "Member of CCNS(電腦網路愛好社), NCKUCTF(資安社)",
           "Encouragement of Privileged High School Students Scholarship",
-          "Member of NCKUCTF(資安社)",
           "Member of Information group at BT&D² Team",
         ].map((item) => (
           <li>
