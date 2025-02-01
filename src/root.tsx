@@ -14,7 +14,10 @@ export default function Home() {
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>
-        <div class="max-w-screen-lg shadow-2xl lg:mt-6 mx-auto bg-sky-100">
+        <div
+          class="max-w-screen-lg shadow-2xl lg:mt-6 mx-auto bg-sky-100"
+          id="pdf-root"
+        >
           <Header />
           <div class="grid grid-cols-3 cursor-grab">
             <div class="col-span-3 lg:col-span-1">

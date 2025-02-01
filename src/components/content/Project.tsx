@@ -1,13 +1,15 @@
-import { component$, JSXChildren } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { BsLink45Deg, BsPinAngle } from "@qwikest/icons/bootstrap";
 
+interface Data {
+  title: string;
+  url?: string;
+  tags: string[];
+  descriptions: string[];
+}
+
 function ProjectEntry(
-  { title, url, tags, children }: {
-    title: string;
-    url?: string;
-    tags: string[];
-    children?: JSXChildren[] | JSXChildren;
-  },
+  { title, url, tags, descriptions }: Data,
 ) {
   return (
     <div class="pb-4">
@@ -46,63 +48,68 @@ function ProjectEntry(
           </div>
         )}
 
-      {children}
+      <ul class="text-sm list-disc ml-5 leading-4">
+        {descriptions.map((item) => (
+          <li class="py-1">
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
-interface Data {
-  [key: string]: {
-    url?: string;
-    tags: string[];
-    description: string[];
-  };
-}
-
-const data: Data = {
-  "Website to schedule chemistry data analysis": {
-    tags: ["Web", "Kubernetes", "Yunikorn"],
-    description: [
+const datas: Data[] = [
+  {
+    title: "Website to schedule chemistry data analysis",
+    tags: ["Typescript", "Kubernetes", "Yunikorn", "React"],
+    descriptions: [
       "Similar to Apache Airflow but less powerful(also less complex to use).",
       "Avoid manual intervention between one analysis process and another.",
       "Run 5 different ML-based chemistry analysis on 8 machines.",
     ],
   },
-  "Grpc(grpc-web) services for a contest-management website": {
+  {
+    title: "Grpc(grpc-web) services for a contest-management website",
     url: "https://github.com/mdcpp/mdoj",
-    tags: ["gRPC", "Web", "Sandbox"],
-    description: [
+    tags: ["gRPC", "Rust", "Sandbox", "FUSE", "Docker"],
+    descriptions: [
       "Developed a contest-management website with grpc services for real-time communication.",
       "Implemented a contest management system with a real-time leaderboard.",
       "Developed a web-based Editor for the contest.",
     ],
   },
-  "Website for study resource": {
+  {
+    title: "Website for study resource",
     url: "https://tlds.functionxyz.eu.org/",
-    tags: ["Web", "Firebase", "Serverless"],
-    description: [
+    tags: ["Firebase", "Serverless", "Node.js"],
+    descriptions: [
       "Assist schoolmates in locating resources through the development of a website.",
       "Used by schoolmates, with over ten study notes within a month of release",
     ],
   },
-  "Dependency-free http reverse proxy": {
+  {
+    title: "Dependency-free http reverse proxy",
     url: "https://github.com/Eason0729/simple-reverse-proxy",
-    tags: ["Multithreading", "System Programming"],
-    description: [
+    tags: ["Multithreading", "System Programming", "Rust"],
+    descriptions: [
       "Developed a dependency-free http reverse proxy with multithreading support.",
       "Implemented a simple load balancer with round-robin algorithm that reach 40000 request per seconds.",
-      "Implemented coroutine-based async I/O for better performance using executor-reactor model.",
+      "Implemented coroutine-based async I/O using executor-reactor model.",
     ],
   },
-  "Novel translation website": {
+  {
+    title: "Novel translation website",
     url: "https://github.com/Eason0729/novel-tralslate",
-    tags: ["Web", "coursework"],
-    description: [
+    tags: ["Web", "Typescript", "CI/CD", "React", "Crawler", "Docker"],
+    descriptions: [
       "Developed a novel translation pipeline with LLM.",
       "Implemented a website for novel reading with a simple UI.",
+      "Set up a CI/CD pipeline with Gitea Actions.",
     ],
   },
-};
+];
+
 export const Project = component$(() => {
   return (
     <>
@@ -117,17 +124,7 @@ export const Project = component$(() => {
           Side Project
         </div>
       </a>
-      {Object.entries(data).map(([title, { url, tags, description }]) => (
-        <ProjectEntry title={title} url={url} tags={tags}>
-          <ul class="text-sm list-disc ml-5 leading-4">
-            {description.map((item) => (
-              <li class="py-1">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </ProjectEntry>
-      ))}
+      {datas.map((entry) => <ProjectEntry {...entry} />)}
     </>
   );
 });
